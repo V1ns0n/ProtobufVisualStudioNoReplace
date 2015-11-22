@@ -1,0 +1,29 @@
+﻿生成启动时间为 2015/11/22 2:05:39。
+     1>项目“E:\Document\Visual Studio 2010\Projects\EgmTest\EgmTest\EgmTest.vcxproj”在节点 2 上(build 个目标)。
+     1>InitializeBuildStatus:
+         正在创建“Debug\EgmTest.unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+       ClCompile:
+         所有输出均为最新。
+         D:\VisualStudio2010\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"StdAfx.h" /Fp"Debug\EgmTest.pch" /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt EgmTest.cpp
+         EgmTest.cpp
+       ManifestResourceCompile:
+         所有输出均为最新。
+       Link:
+         D:\VisualStudio2010\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"E:\Document\Visual Studio 2010\Projects\EgmTest\Debug\EgmTest.exe" /INCREMENTAL /NOLOGO /LIBPATH:E:\Document\protobuf2.6.1\lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\EgmTest.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"E:\Document\Visual Studio 2010\Projects\EgmTest\Debug\EgmTest.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:\Document\Visual Studio 2010\Projects\EgmTest\Debug\EgmTest.lib" /MACHINE:X86 Debug\EgmTest.exe.embed.manifest.res
+         Debug\egm.pb.obj
+         Debug\EgmTest.obj
+         Debug\stdafx.obj
+       Manifest:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /out:"Debug\EgmTest.exe.embed.manifest" /manifest Debug\EgmTest.exe.intermediate.manifest
+         所有输出均为最新。
+       LinkEmbedManifest:
+         所有输出均为最新。
+         EgmTest.vcxproj -> E:\Document\Visual Studio 2010\Projects\EgmTest\Debug\EgmTest.exe
+       FinalizeBuildStatus:
+         正在删除文件“Debug\EgmTest.unsuccessfulbuild”。
+         正在对“Debug\EgmTest.lastbuildstate”执行 Touch 任务。
+     1>已完成生成项目“E:\Document\Visual Studio 2010\Projects\EgmTest\EgmTest\EgmTest.vcxproj”(build 个目标)的操作。
+
+生成成功。
+
+已用时间 00:00:01.58
