@@ -120,6 +120,56 @@ void CreateSensorJointsMessage(EgmSensor* pSensorMessage,double joints[])
     pSensorMessage->set_allocated_planned(planned);
 }
 
+//Create a sensor speedref pos message
+void CreateSensorSpeedPosMessage(EgmSensor* pSensorMessage,double speedpos[])
+{
+    int size = 6;
+	//cout<<size<<endl;
+    size=size>6? 6:size;
+	//cout<<size<<endl;
+    EgmHeader* header = new EgmHeader();
+    header->set_mtype(EgmHeader_MessageType_MSGTYPE_CORRECTION);
+    header->set_seqno(sequenceNumber++);
+    header->set_tm(GetTickCount());
+
+    pSensorMessage->set_allocated_header(header);
+
+    EgmCartesianSpeed* cs = new EgmCartesianSpeed();
+    for(int i =0; i<size; i++)
+    {
+		cs->add_value(speedpos[i]);
+    }
+    EgmSpeedRef *speedref = new EgmSpeedRef();
+	speedref->set_allocated_cartesians(cs);
+
+	pSensorMessage->set_allocated_speedref(speedref);
+}
+
+//Create a sensor speedref joints message
+void CreateSensorSpeedJointsMessage(EgmSensor* pSensorMessage,double speedjoints[])
+{
+    int size = 6;
+	//cout<<size<<endl;
+    size=size>6? 6:size;
+	//cout<<size<<endl;
+    EgmHeader* header = new EgmHeader();
+    header->set_mtype(EgmHeader_MessageType_MSGTYPE_CORRECTION);
+    header->set_seqno(sequenceNumber++);
+    header->set_tm(GetTickCount());
+
+    pSensorMessage->set_allocated_header(header);
+
+    EgmJoints* pj = new EgmJoints();
+    for(int i =0; i<size; i++)
+    {
+         pj->add_joints(speedjoints[i]);
+    };
+    EgmSpeedRef *speedref = new EgmSpeedRef();
+	speedref->set_allocated_joints(pj);
+
+	pSensorMessage->set_allocated_speedref(speedref);
+}
+
 //Send a sensor message
 int SendSensorMessage(SOCKET sockfd, const sockaddr* clientAddr,int len, EgmSensor* pSensorMessage)
 {
