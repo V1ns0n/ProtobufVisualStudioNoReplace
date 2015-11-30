@@ -64,7 +64,7 @@ using namespace abb::egm;
 
 //////////////////////////////////////////////////////////////////////////
 // Create a simple sensor message
-void CreateRobotMessage(EgmRobot* pRobotMessage)
+void CreateRobotMessage(EgmRobot* pRobotMessage,float pose[])
 {
     EgmHeader* header = new EgmHeader();
     header->set_mtype(EgmHeader_MessageType_MSGTYPE_DATA);
@@ -74,9 +74,9 @@ void CreateRobotMessage(EgmRobot* pRobotMessage)
     pRobotMessage->set_allocated_header(header);
 
     EgmCartesian *pc = new EgmCartesian();
-    pc->set_x(1.1);
-    pc->set_y(2.2);
-    pc->set_z(3.3);
+    pc->set_x(pose[0]);
+    pc->set_y(pose[1]);
+    pc->set_z(pose[2]);
 
     EgmQuaternion *pq = new EgmQuaternion();
     pq->set_u0(1.0);
@@ -88,10 +88,10 @@ void CreateRobotMessage(EgmRobot* pRobotMessage)
     pcartesian->set_allocated_orient(pq);
     pcartesian->set_allocated_pos(pc);
 
-    EgmPlanned *planned = new EgmPlanned();
-    planned->set_allocated_cartesian(pcartesian);
+    EgmFeedBack *feedback = new EgmFeedBack();
+    feedback->set_allocated_cartesian(pcartesian);
 
-    pRobotMessage->set_allocated_planned(planned);
+    pRobotMessage->set_allocated_feedback(feedback);
 }
 
 //Send a robot message
@@ -180,6 +180,7 @@ int _tmain(int argc, _TCHAR* argv[])
     SOCKET sockfd;
     int flag=0;
     struct sockaddr_in serverAddr, clientAddr;
+	float pose[3]={1,0,0};
 
     /* Init winsock */
     WSADATA wsaData;
@@ -194,18 +195,19 @@ int _tmain(int argc, _TCHAR* argv[])
 
     memset(&serverAddr, sizeof(serverAddr), 0);
     serverAddr.sin_family = AF_INET;
-    serverAddr.sin_addr.s_addr = inet_addr("192.168.0.103");
+    serverAddr.sin_addr.s_addr = inet_addr("127.168.0.1");
     serverAddr.sin_port = htons(portNumber);
 	int len =  sizeof(serverAddr);
 
     // listen on all interfaces
     //bind(sockfd, (struct sockaddr *)&serverAddr, sizeof(serverAddr));
 
-    for (int messages = 0; messages < 100; messages++)
+    //for (int messages = 0; messages < 100; messages++)
+	while(1)
     {
         // create and send a Robot message
         EgmRobot *pRobotMessage = new EgmRobot();
-        CreateRobotMessage(pRobotMessage);
+        CreateRobotMessage(pRobotMessage,pose);
 		/*string messageBuffer;
 		int n;
 		 pRobotMessage->SerializeToString(&messageBuffer);
@@ -234,6 +236,8 @@ int _tmain(int argc, _TCHAR* argv[])
       
 		 // receive and display message from sensor
         flag=RecieveSensorMessage(sockfd,(struct sockaddr *)&serverAddr,&len);
+		pose[0]++;
+		Sleep(1000);
     }
 	while(1){}
     return 0;

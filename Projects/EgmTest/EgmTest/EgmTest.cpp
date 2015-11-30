@@ -121,7 +121,7 @@ void CreateSensorJointsMessage(EgmSensor* pSensorMessage,double joints[])
 }
 
 //Create a sensor speedref pos message
-void CreateSensorSpeedPosMessage(EgmSensor* pSensorMessage,double speedpos[])
+void CreateSensorSpeedPoseMessage(EgmSensor* pSensorMessage,double speedpos[])
 {
     int size = 6;
 	//cout<<size<<endl;
@@ -143,6 +143,55 @@ void CreateSensorSpeedPosMessage(EgmSensor* pSensorMessage,double speedpos[])
 	speedref->set_allocated_cartesians(cs);
 
 	pSensorMessage->set_allocated_speedref(speedref);
+}
+
+//Create a sensor speedref pos message
+void CreateSensorSpeedPose2Message(EgmSensor* pSensorMessage,double speedpos[],double pose[])
+{
+    int size = 6;
+	//cout<<size<<endl;
+    size=size>6? 6:size;
+	//cout<<size<<endl;
+    EgmHeader* header = new EgmHeader();
+    header->set_mtype(EgmHeader_MessageType_MSGTYPE_CORRECTION);
+    header->set_seqno(sequenceNumber++);
+    header->set_tm(GetTickCount());
+
+    pSensorMessage->set_allocated_header(header);
+
+    EgmCartesianSpeed* cs = new EgmCartesianSpeed();
+	//cout<<"speed:";
+    for(int i =0; i<size; i++)
+    {
+		cs->add_value(speedpos[i]);
+		//cout<<cs->value(i)<<" ";
+    }
+	//cout<<endl;
+    EgmSpeedRef *speedref = new EgmSpeedRef();
+	speedref->set_allocated_cartesians(cs);
+
+	pSensorMessage->set_allocated_speedref(speedref);
+
+    EgmCartesian *pc = new EgmCartesian();
+    pc->set_x(pose[0]);
+    pc->set_y(pose[1]);
+    pc->set_z(pose[2]);
+	//cout<<"xyz:"<<pc->x()<<" "<<pc->y()<<" "<<pc->z()<<endl;
+
+    EgmQuaternion *pq = new EgmQuaternion();
+    pq->set_u0(pose[3]);
+    pq->set_u1(pose[4]);
+    pq->set_u2(pose[5]);
+    pq->set_u3(pose[6]);
+
+    EgmPose *pcartesian = new EgmPose();
+    pcartesian->set_allocated_orient(pq);
+    pcartesian->set_allocated_pos(pc);
+
+    EgmPlanned *planned = new EgmPlanned();
+    planned->set_allocated_cartesian(pcartesian);
+
+    pSensorMessage->set_allocated_planned(planned);
 }
 
 //Create a sensor speedref joints message
@@ -171,7 +220,7 @@ void CreateSensorSpeedJointsMessage(EgmSensor* pSensorMessage,double speedjoints
 }
 
 //Send a sensor message
-int SendSensorMessage(SOCKET sockfd, const sockaddr* clientAddr,int len, EgmSensor* pSensorMessage)
+int SendSensorMessage(SOCKET sockfd, const sockaddr* clientAddr,int len, EgmSensor* pSensorMessage,ofstream &outfile)
 {
 	string messageBuffer;
 	int n;
@@ -182,6 +231,7 @@ int SendSensorMessage(SOCKET sockfd, const sockaddr* clientAddr,int len, EgmSens
     if (n < 0)
     {
         printf("Error send message\n");
+		outfile<<"Error send message\n";
     }
 	return n;
 }
@@ -200,54 +250,80 @@ void DisplayRobotMessage(EgmRobot *pRobotMessage)
 			if(pRobotMessage->feedback().has_joints())
 			{
 				for(int i=0;i<pRobotMessage->feedback().joints().joints_size();i++)
-					printf("feedback joints%d:%f\n",i,pRobotMessage->feedback().joints().joints(i));
+					printf("feedback joints%d:%f\n",i+1,pRobotMessage->feedback().joints().joints(i));
 			}
 			//Print Feedback Pose
 			if(pRobotMessage->feedback().has_cartesian())
 			{
-				printf("cartesian pose:(%f, %f, %f)\n",pRobotMessage->feedback().cartesian().pos().x(),pRobotMessage->feedback().cartesian().pos().y(),pRobotMessage->feedback().cartesian().pos().z());
+				printf("feedback cartesian pose:(%f, %f, %f)\n",pRobotMessage->feedback().cartesian().pos().x(),pRobotMessage->feedback().cartesian().pos().y(),pRobotMessage->feedback().cartesian().pos().z());
 			}		
 		}
 		//Print Planned
 		if(pRobotMessage->has_planned())
 		{
-			//Print Feedback Joints
+			//Print Planned Joints
 			if(pRobotMessage->planned().has_joints())
 			{
 				for(int i=0;i<pRobotMessage->planned().joints().joints_size();i++)
-					printf("feedback joints%d:%f\n",i,pRobotMessage->planned().joints().joints(i));
+					printf("planned joints%d:%f\n",i+1,pRobotMessage->planned().joints().joints(i));
 			}
-			//Print Feedback Pose
+			//Print Planned Pose
 			if(pRobotMessage->planned().has_cartesian())
 			{
-				printf("feedback cartesian pose:(%f, %f, %f)\n",pRobotMessage->planned().cartesian().pos().x(),pRobotMessage->planned().cartesian().pos().y(),pRobotMessage->planned().cartesian().pos().z());
-                printf("feadback cartesian quaternion:(%f, %f, %f, %f)\n",pRobotMessage->planned().cartesian().orient().u0(),pRobotMessage->planned().cartesian().orient().u1(),pRobotMessage->planned().cartesian().orient().u2(),pRobotMessage->planned().cartesian().orient().u3());
+				printf("planned cartesian pose:(%f, %f, %f)\n",pRobotMessage->planned().cartesian().pos().x(),pRobotMessage->planned().cartesian().pos().y(),pRobotMessage->planned().cartesian().pos().z());
+                printf("planned cartesian quaternion:(%f, %f, %f, %f)\n",pRobotMessage->planned().cartesian().orient().u0(),pRobotMessage->planned().cartesian().orient().u1(),pRobotMessage->planned().cartesian().orient().u2(),pRobotMessage->planned().cartesian().orient().u3());
 			}		
 		}
 		//Print Motor State
 		if(pRobotMessage->has_motorstate())
 		{
-			printf("Motor State:%d",pRobotMessage->motorstate().state());
+			printf("Motor State:%d\n",pRobotMessage->motorstate().state());
 		}
 		//Print MCI State
 		if(pRobotMessage->has_mcistate())
 		{
-			printf("Motor State:%d",pRobotMessage->mcistate().state());
+			printf("MCI State:%d\n",pRobotMessage->mcistate().state());
 		}
 		//Print MCI Convergence Met
 		if(pRobotMessage->has_mciconvergencemet())
 		{
-			printf("Motor State:%d",pRobotMessage->mciconvergencemet());
+			printf("MCI_Convergencement State:%d\n",pRobotMessage->mciconvergencemet());
 		}
     }
     else
     {
         printf("No header\n");
     }
+	 printf("\n");
+}
+
+void PrintVelocity(EgmRobot *pRobotMessage, EgmRobot *last_message,ofstream& outfile,double* speed_pose)
+{
+	double vel[3]={0,0,0};
+	if(last_message->has_feedback()&&last_message->feedback().has_cartesian())
+	{
+		unsigned int temp1=pRobotMessage->header().tm();
+		unsigned int temp2=last_message->header().tm();
+		double temp_time=(pRobotMessage->header().tm()-last_message->header().tm())/1000.0;
+		cout<<temp_time<<endl;
+		//outfile<<temp_time<<" ";
+		outfile<<temp1<<" "<<temp_time<<" ";
+		if(temp_time!=0)
+		{
+			vel[0]=pRobotMessage->feedback().cartesian().pos().x()-last_message->feedback().cartesian().pos().x();
+			vel[1]=pRobotMessage->feedback().cartesian().pos().y()-last_message->feedback().cartesian().pos().y();
+			vel[2]=pRobotMessage->feedback().cartesian().pos().z()-last_message->feedback().cartesian().pos().z();
+			vel[0]=vel[0]/temp_time;
+			vel[1]=vel[1]/temp_time;
+			vel[2]=vel[2]/temp_time;
+			cout<<"velocity:"<<vel[0]<<" "<<vel[1]<<" "<<vel[2]<<endl;
+			outfile<<vel[0]<<" "<<vel[1]<<" "<<vel[2]<<" "<<speed_pose[0]<<" "<<speed_pose[1]<<" "<<speed_pose[2]<<endl;
+		}
+	}
 }
 
 //Recieve and display a robot message
-int RecieveRobotMessage(SOCKET sockfd, sockaddr* clientAddr,int* len)
+int RecieveRobotMessage(SOCKET sockfd, sockaddr* clientAddr,int* len,EgmRobot* last_message,ofstream& outfile,double* speed_pose)
 {
 	int n;
 	char protoMessage[1400];
@@ -255,12 +331,14 @@ int RecieveRobotMessage(SOCKET sockfd, sockaddr* clientAddr,int* len)
     if (n < 0)
     {
         printf("Error receive message\n");
+		outfile<<"Error receive message\n";
 		return n;
 	}
     // deserialize inbound message
     EgmRobot *pRobotMessage = new EgmRobot();
     pRobotMessage->ParseFromArray(protoMessage, n);
-    DisplayRobotMessage(pRobotMessage);
+	PrintVelocity(pRobotMessage,last_message,outfile,speed_pose);
+	*last_message=*pRobotMessage;
     delete pRobotMessage;
 	return n;
 }
@@ -269,8 +347,11 @@ int _tmain(int argc, _TCHAR* argv[])
 {
     SOCKET sockfd;
     struct sockaddr_in serverAddr, clientAddr;
-	double pose[7]={1.0,2.0,3.0,1.0,0,0,0};
+	double pose[7]={0,0,10,1.0,0,0,0};
 	double joints[6]={1,2,3,4,5,6};
+	double speed_pose[6]={0,0,0,0,0,0};
+	ofstream outfile("velocity.txt");
+	EgmRobot last_message;
 	//cout<<sizeof(joints)<<endl;
 	int flag=0;
     /* Init winsock */
@@ -293,10 +374,11 @@ int _tmain(int argc, _TCHAR* argv[])
     // listen on all interfaces
     bind(sockfd, (struct sockaddr *)&serverAddr, sizeof(serverAddr));
 
-    for (int messages = 0; messages < 100; messages++)
+    //for (int messages = 0; messages < 100; messages++)
+	while(1)
     {
         //receive and display message from robot
-		flag=RecieveRobotMessage(sockfd,(struct sockaddr *)&clientAddr,&len);
+		flag=RecieveRobotMessage(sockfd,(struct sockaddr *)&clientAddr,&len, &last_message,outfile,speed_pose);
 		if (flag<0)
         continue;
 		/*int len,n;
@@ -314,11 +396,23 @@ int _tmain(int argc, _TCHAR* argv[])
 		delete pRobotMessage;*/
       
         // create and send a sensor message
-        EgmSensor *pSensorMessage = new EgmSensor();
-        //CreateSensorPoseMessage(pSensorMessage,pose);
-		CreateSensorJointsMessage(pSensorMessage,joints);
-		flag=SendSensorMessage(sockfd,(struct sockaddr *)&clientAddr,len,pSensorMessage);
-		delete pSensorMessage;
+		//if(messages==0)
+		{
+			EgmSensor *pSensorMessage = new EgmSensor();
+			//CreateSensorPoseMessage(pSensorMessage,pose);
+			//CreateSensorJointsMessage(pSensorMessage,joints);
+			//CreateSensorSpeedJointsMessage(pSensorMessage,joints);
+			//CreateSensorSpeedPoseMessage(pSensorMessage,speed_pose);
+			CreateSensorSpeedPose2Message(pSensorMessage,speed_pose,pose);
+			flag=SendSensorMessage(sockfd,(struct sockaddr *)&clientAddr,len,pSensorMessage,outfile);
+			delete pSensorMessage;
+		}
+		speed_pose[2]+=1;
+		/*for (int i=0;i<3;i++)
+		{
+			pose[i]=pose[i]+1;
+		}*/
+		//Sleep(10);
 	}
 	while(1){}
     return 0;

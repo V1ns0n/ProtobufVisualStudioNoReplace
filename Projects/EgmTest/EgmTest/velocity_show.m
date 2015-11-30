@@ -1,0 +1,11 @@
+[t,dt,cx,cy,cz,px,py,pz]=textread('velocity.txt','%d %f %f %f %f %f %f %f');
+figure;
+plot(t/1000,cx,t/1000,px);
+figure;
+plot(t/1000,cy,t/1000,py);
+figure;
+plot(t/1000,cz,t/1000,pz);
+figure;
+plot(t/1000,cx,t/1000,cy,t/1000,cz,t/1000,px,t/1000,py,t/1000,pz);
+figure;
+plot(dt);
