@@ -1,4 +1,4 @@
-﻿生成启动时间为 2015/11/27 16:49:48。
+﻿生成启动时间为 2015/12/11 19:45:52。
      1>项目“E:\Document\ProtobufVisualStudioNoReplace\Projects\EgmTest\EgmTest\EgmTest.vcxproj”在节点 2 上(rebuild 个目标)。
      1>_PrepareForClean:
          正在删除文件“Debug\EgmTest.lastbuildstate”。
@@ -12,98 +12,98 @@
          egm.pb.cc
      1>d:\visualstudio2010\vc\include\xutility(2227): warning C4996: 'std::_Copy_impl': Function call with parameters that may be unsafe - this call relies on the caller to check that the passed values are correct. To disable this warning, use -D_SCL_SECURE_NO_WARNINGS. See documentation on how to use Visual C++ 'Checked Iterators'
                  d:\visualstudio2010\vc\include\xutility(2212) : 参见“std::_Copy_impl”的声明
-                 e:\document\protobuf2.6.1\include\google\protobuf\repeated_field.h(842): 参见对正在编译的函数 模板 实例化“_OutIt std::copy<const Element[],Element[]>(_InIt,_InIt,_OutIt)”的引用
+                 e:\document\protobufvisualstudionoreplace\include\google\protobuf\repeated_field.h(842): 参见对正在编译的函数 模板 实例化“_OutIt std::copy<const Element[],Element[]>(_InIt,_InIt,_OutIt)”的引用
                  with
                  [
                      _OutIt=google::protobuf::uint64 [],
                      Element=google::protobuf::uint64,
                      _InIt=const google::protobuf::uint64 []
                  ]
-                 e:\document\protobuf2.6.1\include\google\protobuf\repeated_field.h(841): 编译类 模板 成员函数“void google::protobuf::internal::ElementCopier<Element>::operator ()(Element [],const Element [],int)”时
+                 e:\document\protobufvisualstudionoreplace\include\google\protobuf\repeated_field.h(841): 编译类 模板 成员函数“void google::protobuf::internal::ElementCopier<Element>::operator ()(Element [],const Element [],int)”时
                  with
                  [
                      Element=google::protobuf::uint64
                  ]
-                 e:\document\protobuf2.6.1\include\google\protobuf\repeated_field.h(834): 参见对正在编译的类 模板 实例化“google::protobuf::internal::ElementCopier<Element>”的引用
+                 e:\document\protobufvisualstudionoreplace\include\google\protobuf\repeated_field.h(834): 参见对正在编译的类 模板 实例化“google::protobuf::internal::ElementCopier<Element>”的引用
                  with
                  [
                      Element=google::protobuf::uint64
                  ]
-                 e:\document\protobuf2.6.1\include\google\protobuf\repeated_field.h(833): 编译类 模板 成员函数“void google::protobuf::RepeatedField<Element>::CopyArray(Element [],const Element [],int)”时
+                 e:\document\protobufvisualstudionoreplace\include\google\protobuf\repeated_field.h(833): 编译类 模板 成员函数“void google::protobuf::RepeatedField<Element>::CopyArray(Element [],const Element [],int)”时
                  with
                  [
                      Element=google::protobuf::uint64
                  ]
-                 e:\document\protobuf2.6.1\include\google\protobuf\repeated_field.h(827): 编译类 模板 成员函数“void google::protobuf::RepeatedField<Element>::MoveArray(Element [],Element [],int)”时
+                 e:\document\protobufvisualstudionoreplace\include\google\protobuf\repeated_field.h(827): 编译类 模板 成员函数“void google::protobuf::RepeatedField<Element>::MoveArray(Element [],Element [],int)”时
                  with
                  [
                      Element=google::protobuf::uint64
                  ]
-                 e:\document\protobuf2.6.1\include\google\protobuf\repeated_field.h(806): 编译类 模板 成员函数“void google::protobuf::RepeatedField<Element>::Reserve(int)”时
+                 e:\document\protobufvisualstudionoreplace\include\google\protobuf\repeated_field.h(806): 编译类 模板 成员函数“void google::protobuf::RepeatedField<Element>::Reserve(int)”时
                  with
                  [
                      Element=google::protobuf::uint64
                  ]
-                 e:\document\protobuf2.6.1\include\google\protobuf\repeated_field.h(631): 编译类 模板 成员函数“int google::protobuf::RepeatedField<Element>::size(void) const”时
+                 e:\document\protobufvisualstudionoreplace\include\google\protobuf\repeated_field.h(631): 编译类 模板 成员函数“int google::protobuf::RepeatedField<Element>::size(void) const”时
                  with
                  [
                      Element=google::protobuf::uint64
                  ]
-                 e:\document\protobuf2.6.1\include\google\protobuf\wire_format_lite_inl.h(256): 参见对正在编译的类 模板 实例化“google::protobuf::RepeatedField<Element>”的引用
+                 e:\document\protobufvisualstudionoreplace\include\google\protobuf\wire_format_lite_inl.h(256): 参见对正在编译的类 模板 实例化“google::protobuf::RepeatedField<Element>”的引用
                  with
                  [
                      Element=google::protobuf::uint64
                  ]
-                 e:\document\protobuf2.6.1\include\google\protobuf\wire_format_lite_inl.h(309): 参见对正在编译的函数 模板 实例化“bool google::protobuf::internal::WireFormatLite::ReadRepeatedFixedSizePrimitive<google::protobuf::uint64,TYPE_FIXED64>(int,google::protobuf::uint32,google::protobuf::io::CodedInputStream *,google::protobuf::RepeatedField<Element> *)”的引用
+                 e:\document\protobufvisualstudionoreplace\include\google\protobuf\wire_format_lite_inl.h(309): 参见对正在编译的函数 模板 实例化“bool google::protobuf::internal::WireFormatLite::ReadRepeatedFixedSizePrimitive<google::protobuf::uint64,TYPE_FIXED64>(int,google::protobuf::uint32,google::protobuf::io::CodedInputStream *,google::protobuf::RepeatedField<Element> *)”的引用
                  with
                  [
                      Element=google::protobuf::uint64
                  ]
      1>d:\visualstudio2010\vc\include\xutility(2227): warning C4996: 'std::_Copy_impl': Function call with parameters that may be unsafe - this call relies on the caller to check that the passed values are correct. To disable this warning, use -D_SCL_SECURE_NO_WARNINGS. See documentation on how to use Visual C++ 'Checked Iterators'
                  d:\visualstudio2010\vc\include\xutility(2212) : 参见“std::_Copy_impl”的声明
-                 e:\document\protobuf2.6.1\include\google\protobuf\repeated_field.h(842): 参见对正在编译的函数 模板 实例化“_OutIt std::copy<const Element[],Element[]>(_InIt,_InIt,_OutIt)”的引用
+                 e:\document\protobufvisualstudionoreplace\include\google\protobuf\repeated_field.h(842): 参见对正在编译的函数 模板 实例化“_OutIt std::copy<const Element[],Element[]>(_InIt,_InIt,_OutIt)”的引用
                  with
                  [
                      _OutIt=google::protobuf::int64 [],
                      Element=google::protobuf::int64,
                      _InIt=const google::protobuf::int64 []
                  ]
-                 e:\document\protobuf2.6.1\include\google\protobuf\repeated_field.h(841): 编译类 模板 成员函数“void google::protobuf::internal::ElementCopier<Element>::operator ()(Element [],const Element [],int)”时
+                 e:\document\protobufvisualstudionoreplace\include\google\protobuf\repeated_field.h(841): 编译类 模板 成员函数“void google::protobuf::internal::ElementCopier<Element>::operator ()(Element [],const Element [],int)”时
                  with
                  [
                      Element=google::protobuf::int64
                  ]
-                 e:\document\protobuf2.6.1\include\google\protobuf\repeated_field.h(834): 参见对正在编译的类 模板 实例化“google::protobuf::internal::ElementCopier<Element>”的引用
+                 e:\document\protobufvisualstudionoreplace\include\google\protobuf\repeated_field.h(834): 参见对正在编译的类 模板 实例化“google::protobuf::internal::ElementCopier<Element>”的引用
                  with
                  [
                      Element=google::protobuf::int64
                  ]
-                 e:\document\protobuf2.6.1\include\google\protobuf\repeated_field.h(833): 编译类 模板 成员函数“void google::protobuf::RepeatedField<Element>::CopyArray(Element [],const Element [],int)”时
+                 e:\document\protobufvisualstudionoreplace\include\google\protobuf\repeated_field.h(833): 编译类 模板 成员函数“void google::protobuf::RepeatedField<Element>::CopyArray(Element [],const Element [],int)”时
                  with
                  [
                      Element=google::protobuf::int64
                  ]
-                 e:\document\protobuf2.6.1\include\google\protobuf\repeated_field.h(827): 编译类 模板 成员函数“void google::protobuf::RepeatedField<Element>::MoveArray(Element [],Element [],int)”时
+                 e:\document\protobufvisualstudionoreplace\include\google\protobuf\repeated_field.h(827): 编译类 模板 成员函数“void google::protobuf::RepeatedField<Element>::MoveArray(Element [],Element [],int)”时
                  with
                  [
                      Element=google::protobuf::int64
                  ]
-                 e:\document\protobuf2.6.1\include\google\protobuf\repeated_field.h(806): 编译类 模板 成员函数“void google::protobuf::RepeatedField<Element>::Reserve(int)”时
+                 e:\document\protobufvisualstudionoreplace\include\google\protobuf\repeated_field.h(806): 编译类 模板 成员函数“void google::protobuf::RepeatedField<Element>::Reserve(int)”时
                  with
                  [
                      Element=google::protobuf::int64
                  ]
-                 e:\document\protobuf2.6.1\include\google\protobuf\repeated_field.h(631): 编译类 模板 成员函数“int google::protobuf::RepeatedField<Element>::size(void) const”时
+                 e:\document\protobufvisualstudionoreplace\include\google\protobuf\repeated_field.h(631): 编译类 模板 成员函数“int google::protobuf::RepeatedField<Element>::size(void) const”时
                  with
                  [
                      Element=google::protobuf::int64
                  ]
-                 e:\document\protobuf2.6.1\include\google\protobuf\wire_format_lite_inl.h(256): 参见对正在编译的类 模板 实例化“google::protobuf::RepeatedField<Element>”的引用
+                 e:\document\protobufvisualstudionoreplace\include\google\protobuf\wire_format_lite_inl.h(256): 参见对正在编译的类 模板 实例化“google::protobuf::RepeatedField<Element>”的引用
                  with
                  [
                      Element=google::protobuf::int64
                  ]
-                 e:\document\protobuf2.6.1\include\google\protobuf\wire_format_lite_inl.h(311): 参见对正在编译的函数 模板 实例化“bool google::protobuf::internal::WireFormatLite::ReadRepeatedFixedSizePrimitive<google::protobuf::int64,TYPE_SFIXED64>(int,google::protobuf::uint32,google::protobuf::io::CodedInputStream *,google::protobuf::RepeatedField<Element> *)”的引用
+                 e:\document\protobufvisualstudionoreplace\include\google\protobuf\wire_format_lite_inl.h(311): 参见对正在编译的函数 模板 实例化“bool google::protobuf::internal::WireFormatLite::ReadRepeatedFixedSizePrimitive<google::protobuf::int64,TYPE_SFIXED64>(int,google::protobuf::uint32,google::protobuf::io::CodedInputStream *,google::protobuf::RepeatedField<Element> *)”的引用
                  with
                  [
                      Element=google::protobuf::int64
@@ -112,7 +112,7 @@
        ManifestResourceCompile:
          C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\rc.exe /nologo /fo"Debug\EgmTest.exe.embed.manifest.res" Debug\EgmTest_manifest.rc 
        Link:
-         D:\VisualStudio2010\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"E:\Document\ProtobufVisualStudioNoReplace\Projects\EgmTest\Debug\EgmTest.exe" /INCREMENTAL /NOLOGO /LIBPATH:E:\Document\protobuf2.6.1\lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\EgmTest.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"E:\Document\ProtobufVisualStudioNoReplace\Projects\EgmTest\Debug\EgmTest.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:\Document\ProtobufVisualStudioNoReplace\Projects\EgmTest\Debug\EgmTest.lib" /MACHINE:X86 Debug\EgmTest.exe.embed.manifest.res
+         D:\VisualStudio2010\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"E:\Document\ProtobufVisualStudioNoReplace\Projects\EgmTest\Debug\EgmTest.exe" /INCREMENTAL /NOLOGO /LIBPATH:E:\Document\ProtobufVisualStudioNoReplace\lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\EgmTest.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"E:\Document\ProtobufVisualStudioNoReplace\Projects\EgmTest\Debug\EgmTest.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:\Document\ProtobufVisualStudioNoReplace\Projects\EgmTest\Debug\EgmTest.lib" /MACHINE:X86 Debug\EgmTest.exe.embed.manifest.res
          Debug\egm.pb.obj
          Debug\EgmTest.obj
          Debug\stdafx.obj
@@ -121,7 +121,7 @@
          C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /out:"Debug\EgmTest.exe.embed.manifest" /manifest Debug\EgmTest.exe.intermediate.manifest
          C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\rc.exe /nologo /fo"Debug\EgmTest.exe.embed.manifest.res" Debug\EgmTest_manifest.rc 
        LinkEmbedManifest:
-         D:\VisualStudio2010\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"E:\Document\ProtobufVisualStudioNoReplace\Projects\EgmTest\Debug\EgmTest.exe" /INCREMENTAL /NOLOGO /LIBPATH:E:\Document\protobuf2.6.1\lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\EgmTest.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"E:\Document\ProtobufVisualStudioNoReplace\Projects\EgmTest\Debug\EgmTest.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:\Document\ProtobufVisualStudioNoReplace\Projects\EgmTest\Debug\EgmTest.lib" /MACHINE:X86 Debug\EgmTest.exe.embed.manifest.res
+         D:\VisualStudio2010\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"E:\Document\ProtobufVisualStudioNoReplace\Projects\EgmTest\Debug\EgmTest.exe" /INCREMENTAL /NOLOGO /LIBPATH:E:\Document\ProtobufVisualStudioNoReplace\lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\EgmTest.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"E:\Document\ProtobufVisualStudioNoReplace\Projects\EgmTest\Debug\EgmTest.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:\Document\ProtobufVisualStudioNoReplace\Projects\EgmTest\Debug\EgmTest.lib" /MACHINE:X86 Debug\EgmTest.exe.embed.manifest.res
          Debug\egm.pb.obj
          Debug\EgmTest.obj
          Debug\stdafx.obj
@@ -133,4 +133,4 @@
 
 生成成功。
 
-已用时间 00:00:04.53
+已用时间 00:00:04.26
